@@ -10,7 +10,7 @@ app.listen(port);
 app.use(express.json());
 
 app.post(
-  '/',
+  '/post/password',
   body('username', 'Username is required').trim().not().isEmpty(),
   body('password', 'Password is required').trim().not().isEmpty(),
   body('website', 'Website is required').trim().not().isEmpty(),
