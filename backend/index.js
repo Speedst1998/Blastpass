@@ -23,7 +23,7 @@ app.post(
         .then(() => res.send("good"))
         .catch(err => {
           console.log(err);
-          res.send("bad");
+          res.send(err);
         });
     }
 });
