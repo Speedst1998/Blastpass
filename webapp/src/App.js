@@ -19,6 +19,7 @@ class MyApp extends React.Component {
   }
 
   sendRequest = () => {
+    let payload = JSON.stringify({ username: 'test', password: 'testpass', website: 'web' })
     fetch('http://localhost:3030/post/password', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json'},
