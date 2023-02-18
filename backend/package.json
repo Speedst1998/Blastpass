@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Speedst1998/Blastpass#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-validator": "^6.15.0",

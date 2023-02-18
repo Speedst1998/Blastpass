@@ -21,9 +21,8 @@ class MyApp extends React.Component {
   sendRequest = () => {
     fetch('http://localhost:3030/post/password', {
       method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ "username": this.state.username, "password": this.state.password, "website": this.state.website })
+      headers: { 'Content-Type': 'application/json'},
+      body: payload
     }).then((res) => res.json())
       .then((data) => console.log(data))
       .catch((err) => console.log(err))
