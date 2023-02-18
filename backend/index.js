@@ -3,7 +3,7 @@ const { body, validationResult } = require('express-validator');
 const redditPoster = require('./reddit-api-calls')
 
 const app = express();
-const port = 3000;
+const port = 3030;
 
 app.listen(port);
 
@@ -17,10 +17,11 @@ app.post(
   (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      res.status(400).send("bad");
+      res.status(400).send(errors.mapped().msg);
     } else {
+      console.log("Sending post")
       redditPoster.postPassword(req.body.username, req.body.password, req.body.website)
-        .then(() => res.send("good"))
+        .then(() => res.send("Request Success"))
         .catch(err => {
           console.log(err);
           res.send(err);
