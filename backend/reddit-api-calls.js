@@ -10,8 +10,7 @@ const r = new snoowrap({
 
 function postPassword (username, password, website){
   r.getSubreddit('BlastPass').submitSelfpost({title: `${username } has just saved a new ${website} password for you`, text: `${password}`})
-    .then(() => console.log("something"))
-    .catch((err) => console.log(err));
+    .then(() => console.log("something"));
 };
 
 module.exports = {
