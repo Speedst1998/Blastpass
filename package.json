@@ -1,0 +1,26 @@
+{
+  "name": "blastpass",
+  "version": "1.0.0",
+  "description": "Password distributor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Speedst1998/Blastpass.git"
+  },
+  "keywords": [
+    "useless",
+    "stupid"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Speedst1998/Blastpass/issues"
+  },
+  "homepage": "https://github.com/Speedst1998/Blastpass#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
