@@ -2,7 +2,6 @@ import logo from './blastpass-logo.svg';
 import './App.css';
 import React from 'react';
 import { TextField, Button } from '@mui/material';
-import { spacing } from '@mui/system';
 
 class MyApp extends React.Component {
   constructor(props){
@@ -19,7 +18,7 @@ class MyApp extends React.Component {
   }
 
   sendRequest = () => {
-    let payload = JSON.stringify({ username: 'test', password: 'testpass', website: 'web' })
+    let payload = JSON.stringify({ username: this.state.username, password: this.state.password, website: this.state.website })
     fetch('http://localhost:3030/post/password', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json'},
@@ -27,7 +26,7 @@ class MyApp extends React.Component {
     }).then((res) => res.json())
       .then((data) => console.log(data))
       .catch((err) => console.log(err))
-    
+
     this.clear()
   }
 
@@ -39,12 +38,12 @@ class MyApp extends React.Component {
 
         </header>
         <div className='App-body'>
-          <font color="red">BlastPass</font> 
+          <font color="red">BlastPass</font>
           <TextField id="standard-basic"  value={this.state.website} onChange={(e)=>{this.setState({website: e.target.value})}} label="Website" variant="standard" sx={{ m: 1 }}/>
           <TextField id="standard-basic" label="User Name" value={this.state.username} onChange={(e)=>{this.setState({username: e.target.value})}} variant="standard" sx={{ m: 1 }}/>
           <TextField id="standard-basic" label="Password" value={this.state.password} onChange={(e)=>{this.setState({password: e.target.value})}} variant="standard" sx={{ m: 1 }}/>
           <Button variant="contained" color="error" onClick={this.sendRequest} sx={{ m: 5 }}>Safely Save</Button>
-          
+
           <a
             className="App-link"
             href="https://www.reddit.com/r/BlastPass/"
