@@ -2,6 +2,8 @@ import logo from './blastpass-logo.svg';
 import './App.css';
 import React from 'react';
 import { TextField, Button } from '@mui/material';
+import "react-notifications/lib/notifications.css";
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 
 class MyApp extends React.Component {
   constructor(props){
@@ -23,7 +25,14 @@ class MyApp extends React.Component {
       method: 'POST',
       headers: { 'Content-Type': 'application/json'},
       body: payload
-    }).then((res) => res.json())
+    }).then((res) => {
+      res.json();
+      if (res.status === 200) {
+        NotificationManager.success('Your password was gracefully expose to the world', 'Success!');
+      } else {
+        NotificationManager.error('The world was not graced with your password', 'Error');
+      }
+    })
       .then((data) => console.log(data))
       .catch((err) => console.log(err))
 
@@ -33,6 +42,7 @@ class MyApp extends React.Component {
   render() {
     return (
       <div className="App">
+        <NotificationContainer/>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
 
