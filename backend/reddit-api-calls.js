@@ -8,9 +8,8 @@ const r = new snoowrap({
   refreshToken: process.env.REFRESH_TOKEN
 });
 
-function postPassword (username, password, website){
-  r.getSubreddit('BlastPass').submitSelfpost({title: `${username } has just saved a new ${website} password for you`, text: `${password}`})
-    .then(() => console.log("something"));
+async function postPassword (username, password, website){
+  return r.getSubreddit('BlastPass').submitSelfpost({title: `${username } has just saved a new ${website} password for you`, text: `${password}`});
 };
 
 module.exports = {

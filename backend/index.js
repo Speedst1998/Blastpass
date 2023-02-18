@@ -15,11 +15,15 @@ app.post(
   body('password', 'Password is required').trim().not().isEmpty(),
   body('website', 'Website is required').trim().not().isEmpty(),
   (req, res) => {
-    try {
-      validationResult(req).throw();
-      redditPoster.postPassword(req.body.username, req.body.password, req.body.website);
-      res.send("good");
-    } catch (err) {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
       res.status(400).send("bad");
+    } else {
+      redditPoster.postPassword(req.body.username, req.body.password, req.body.website)
+        .then(() => res.send("good"))
+        .catch(err => {
+          console.log(err);
+          res.send("bad");
+        });
     }
 });
